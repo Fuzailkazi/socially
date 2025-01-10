@@ -4,6 +4,7 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 import prisma from '@/lib/prisma';
 import CreatePost from '@/components/CreatePost';
 import { currentUser } from '@clerk/nextjs/server';
+import WhoToFollow from '@/components/WhoToFollow';
 
 export default async function Home() {
   const user = await currentUser();
@@ -11,7 +12,7 @@ export default async function Home() {
     <div className='grid grid-cols-1 lg:grid-cols-10 gap-6'>
       <div className='lg:col-span-6'>{user ? <CreatePost /> : null}</div>
       <div className='hidden lg:block lg:col-span-4 sticky top-4'>
-        WhoToFollow
+        <WhoToFollow />
       </div>
     </div>
   );
