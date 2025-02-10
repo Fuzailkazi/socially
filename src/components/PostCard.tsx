@@ -13,7 +13,7 @@ import { Card, CardContent } from './ui/card';
 import Link from 'next/link';
 import { Avatar, AvatarImage } from './ui/avatar';
 import { formatDistanceToNow } from 'date-fns';
-import { DeleteAlertDialog } from './DateAlertDialog';
+import { DeleteAlertDialog } from './DeleteAlertDialog';
 import { Button } from './ui/button';
 import {
   HeartIcon,
@@ -208,7 +208,10 @@ function PostCard({ post, dbUserId }: { post: Post; dbUserId: string | null }) {
                           @{comment.author.username}
                         </span>
                         <span className='text-sm text-muted-foreground'>·</span>
-                        <span className='text-sm text-muted-foreground'>
+                        <span
+                          className='text-sm text-muted-foreground'
+                          suppressHydrationWarning
+                        >
                           {formatDistanceToNow(new Date(comment.createdAt))} ago
                         </span>
                       </div>
